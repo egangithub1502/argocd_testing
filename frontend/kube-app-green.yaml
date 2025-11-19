@@ -28,12 +28,12 @@ spec:
       - name: kubeappcontainer
         image: us-central1-docker.pkg.dev/stm-01/my-app-repo/html-nginx-app:latest
         ports:
-        - containerPort: 8082
+        - containerPort: 80
           protocol: TCP
         livenessProbe:
           httpGet:
             path: /
-            port: 8082
+            port: 80
             scheme: HTTP
           initialDelaySeconds: 120
           periodSeconds: 10
@@ -42,7 +42,7 @@ spec:
         readinessProbe:
           httpGet:
             path: /
-            port: 8082
+            port: 80
             scheme: HTTP
           initialDelaySeconds: 120
           periodSeconds: 10
