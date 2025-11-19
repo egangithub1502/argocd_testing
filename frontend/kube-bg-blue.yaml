@@ -1,0 +1,136 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: apple-bg-blue
+  namespace: kube
+  labels:
+    app: kube-bg
+    version: blue
+    enabled: "true"
+spec:
+  serviceName: kube-bg-svc
+  replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: kube-bg
+      version: blue
+  template:
+    metadata:
+      labels:
+        app: kube-bg
+        version: blue
+        enabled: "true"
+    spec:
+      serviceAccountName: kube-stag-pvt-cluster-wl-id
+      containers:
+      - name: kubebgcontainer
+        image: us-central1-docker.pkg.dev/apptivo-app-stag/apple-stag-build/apple-app:latest
+        ports:
+        - containerPort: 8082
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /health.jsp
+            port: 8082
+            scheme: HTTP
+          initialDelaySeconds: 120
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /health.jsp
+            port: 8082
+            scheme: HTTP
+          initialDelaySeconds: 120
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        imagePullPolicy: Always
+        volumeMounts:
+         - name: apple-bg-properties
+           mountPath: "/u01/tomcat/app/profitconf/apptivo.properties"
+           subPath: "apptivo.properties"
+         - name: uat-app-conf-properties
+           mountPath: "/u01/tomcat/app/profitconf/apptivoconf.properties"
+           subPath: "apptivoconf.properties"
+         - name: stag-uat-app-log4j-properties
+           mountPath: "/u01/tomcat/app/profitconf/log4j.properties"
+           subPath: log4j.properties
+         - name: stag-uat-app-p12-balaji
+           mountPath: "/u01/tomcat/app/profitconf/balaji-dev-72336204f4e6.p12"
+           subPath: balaji-dev-72336204f4e6.p12
+         - name: uat-app-p12-profit-meeting
+           mountPath: "/u01/tomcat/app/profitconf/profit-meeting-dcea882407a6.p12"
+           subPath: profit-meeting-dcea882407a6.p12
+         - name: stag-uat-app-p12-profit-engineering
+           mountPath: "/u01/tomcat/app/profitconf/profit-engineering-dev-3e00bb49a2c0.p12"
+           subPath: profit-engineering-dev-3e00bb49a2c0.p12
+         - name: uat-app-p12-apptivo-stag-profit
+           mountPath: "/u01/tomcat/app/profitconf/Apptivo-Stag-Profit-cf728e42b28b.p12"
+           subPath: Apptivo-Stag-Profit-cf728e42b28b.p12
+         - name: uat-app-p12-profitokr-engineering-dev
+           mountPath: "/u01/tomcat/app/profitconf/profitokr-engineering-dev-bb269535195e.p12"
+           subPath: profitokr-engineering-dev-bb269535195e.p12
+         - name: apple-ersn-es-ssl
+           mountPath: "/u01/tomcat/app/live/profit/ssl/"
+        envFrom:
+        - configMapRef:
+           name: kube-bg-config
+      volumes:
+      - name: apple-bg-properties
+        csi:
+          driver: secrets-store-gke.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: apple-bg-properties
+      - name: uat-app-conf-properties
+        csi:
+          driver: secrets-store-gke.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: uat-app-conf-properties
+      - name: stag-uat-app-log4j-properties
+        csi:
+          driver: secrets-store-gke.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: stag-uat-app-log4j-properties
+      - name: stag-uat-app-p12-balaji
+        csi:
+          driver: secrets-store-gke.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: stag-uat-app-p12-balaji
+      - name: uat-app-p12-profit-meeting
+        csi:
+          driver: secrets-store-gke.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: uat-app-p12-profit-meeting
+      - name: stag-uat-app-p12-profit-engineering
+        csi:
+          driver: secrets-store-gke.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: stag-uat-app-p12-profit-engineering
+      - name: uat-app-p12-apptivo-stag-profit
+        csi:
+          driver: secrets-store-gke.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: uat-app-p12-apptivo-stag-profit
+      - name: uat-app-p12-profitokr-engineering-dev
+        csi:
+          driver: secrets-store-gke.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: uat-app-p12-profitokr-engineering-dev
+      - name: apple-ersn-es-ssl
+        csi:
+          driver: secrets-store-gke.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: apple-ersn-es-ssl
