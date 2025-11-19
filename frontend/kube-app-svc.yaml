@@ -23,5 +23,5 @@ spec:
     app: kube-app
     version: green
   type: LoadBalancer
-  loadBalancerIP: 10.242.0.21
+  loadBalancerIP: 10.128.0.50
 ---
