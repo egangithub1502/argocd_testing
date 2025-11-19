@@ -26,7 +26,7 @@ spec:
       serviceAccountName: kube-stag-pvt-cluster-wl-id
       containers:
       - name: kubeappcontainer
-        image: us-central1-docker.pkg.dev/apptivo-app-stag/apple-stag-build/apple-app:latest
+        image: us-central1-docker.pkg.dev/stm-01/my-app-repo/html-nginx-app:latest
         ports:
         - containerPort: 8082
           protocol: TCP
