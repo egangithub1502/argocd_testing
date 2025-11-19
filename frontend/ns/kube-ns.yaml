@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kube
+  labels:
+    kubernetes.io/metadata.name: kube
+    pod-security.kubernetes.io/enforce: baseline

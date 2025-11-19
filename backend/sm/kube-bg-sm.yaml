@@ -1,0 +1,107 @@
+apiVersion: secrets-store.csi.x-k8s.io/v1
+kind: SecretProviderClass
+metadata:
+  name: apple-bg-properties
+  namespace: kube
+spec:
+  provider: gke
+  parameters:
+    secrets: |
+      - resourceName: "projects/70082307151/secrets/apple-bg-properties/versions/8"
+        path: "apptivo.properties"
+---
+apiVersion: secrets-store.csi.x-k8s.io/v1
+kind: SecretProviderClass
+metadata:
+  name: uat-app-conf-properties
+  namespace: kube
+spec:
+  provider: gke
+  parameters:
+    secrets: |
+      - resourceName: "projects/70082307151/secrets/uat-app-conf-properties/versions/1"
+        path: "apptivoconf.properties"
+---
+apiVersion: secrets-store.csi.x-k8s.io/v1
+kind: SecretProviderClass
+metadata:
+  name: stag-uat-app-log4j-properties
+  namespace: kube
+spec:
+  provider: gke
+  parameters:
+    secrets: |
+      - resourceName: "projects/70082307151/secrets/stag-uat-app-log4j-properties/versions/1"
+        path: "log4j.properties"
+---
+apiVersion: secrets-store.csi.x-k8s.io/v1
+kind: SecretProviderClass
+metadata:
+  name: stag-uat-app-p12-balaji
+  namespace: kube
+spec:
+  provider: gke
+  parameters:
+    secrets: |
+      - resourceName: "projects/70082307151/secrets/stag-uat-app-p12-balaji/versions/1"
+        path: "balaji-dev-72336204f4e6.p12"
+---
+apiVersion: secrets-store.csi.x-k8s.io/v1
+kind: SecretProviderClass
+metadata:
+  name: uat-app-p12-profit-meeting
+  namespace: kube
+spec:
+  provider: gke
+  parameters:
+    secrets: |
+      - resourceName: "projects/70082307151/secrets/uat-app-p12-profit-meeting/versions/1"
+        path: "profit-meeting-dcea882407a6.p12"
+---
+apiVersion: secrets-store.csi.x-k8s.io/v1
+kind: SecretProviderClass
+metadata:
+  name: stag-uat-app-p12-profit-engineering
+  namespace: kube
+spec:
+  provider: gke
+  parameters:
+    secrets: |
+      - resourceName: "projects/70082307151/secrets/stag-uat-app-p12-profit-engineering/versions/1"
+        path: "profit-engineering-dev-3e00bb49a2c0.p12"
+---
+apiVersion: secrets-store.csi.x-k8s.io/v1
+kind: SecretProviderClass
+metadata:
+  name: uat-app-p12-apptivo-stag-profit
+  namespace: kube
+spec:
+  provider: gke
+  parameters:
+    secrets: |
+      - resourceName: "projects/70082307151/secrets/uat-app-p12-apptivo-stag-profit/versions/1"
+        path: "Apptivo-Stag-Profit-cf728e42b28b.p12"
+---
+apiVersion: secrets-store.csi.x-k8s.io/v1
+kind: SecretProviderClass
+metadata:
+  name: uat-app-p12-profitokr-engineering-dev
+  namespace: kube
+spec:
+  provider: gke
+  parameters:
+    secrets: |
+      - resourceName: "projects/70082307151/secrets/uat-app-p12-profitokr-engineering-dev/versions/1"
+        path: "profitokr-engineering-dev-bb269535195e.p12"
+---
+apiVersion: secrets-store.csi.x-k8s.io/v1
+kind: SecretProviderClass
+metadata:
+  name: apple-ersn-es-ssl
+  namespace: kube
+spec:
+  provider: gke
+  parameters:
+    secrets: |
+      - resourceName: "projects/70082307151/secrets/apple-ersn-es-ssl/versions/1"
+        path: "certificate-g1gc.p12"

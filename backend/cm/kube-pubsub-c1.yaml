@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kube-pc1-config
+  namespace: kube
+data:
+  APP_REDIRECTION_URL: pc-app.profitokr.net
+  BASE_URL: pc-app.profitokr.net
+  BG_URL: pc-api.profitokr.net
+  CERT_NAME: certificate-g1gc.p12
+  CLUSTER_1: apple-new-cluster
+  CLUSTER_2: apple-new-cluster
+  CLUSTER_3: apple-new-cluster
+  DOMAIN_NAME: apptivo.net
+  EMAIL_FROM: admin@berijam.com
+  ES_AUTH_HTTP_TYPE: native
+  ES_AUTH_TYPE: nativeWithSSL
+  ES_CF_ID1: "10011"
+  ES_CF_ID2: "10012"
+  ES_CF_ID3: "10013"
+  ES_CF_IP1: pc-es.profitokr.net
+  ES_CF_IP2: pc-es.profitokr.net
+  ES_CF_IP3: pc-es.profitokr.net
+  ES_CF_PORT1: "443"
+  ES_CF_PORT2: "443"
+  ES_CF_PORT3: "443"
+  FIRM_ID: "244209"
+  KAFKA_URL: 10.80.0.125:9092,10.80.0.117:9092,10.80.0.229:9092
+  LDAP_APPEND_DOMAIN: "N"
+  LDAP_CONFIG_DN: dc=apptivo,dc=net
+  LDAP_CONFIG_DN_GROUPS: dc=apptivo,dc=net
+  LDAP_CONFIG_DN_USERS: dc=apptivo,dc=net
+  LDAP_ENABLED: "Y"
+  LDAP_FILTER_USERID: userid=FILTER_USER_ID
+  LDAP_LOGIN_PASSWORD: welcome123
+  LDAP_LOGIN_USERNAME: cn=Manager,dc=apptivo,dc=net
+  LDAP_PRINCIPAL: uid=LDAP_USER_ID,cn=users,dc=apptivo,dc=net
+  LDAP_SYNC_FREQUENCY_MINUTES: "30"
+  LDAP_URL: ldap://ldap-admin-m05.apptivo.net
+  LDAP_USER_DEPARTMENT_NAME: departmentNumber
+  LDAP_USER_EMAIL_ID: mail
+  LDAP_USER_FIRST_NAME: givenName
+  LDAP_USER_FULL_NAME: cn
+  LDAP_USER_JOB_TITLE: title
+  LDAP_USER_LAST_NAME: sn
+  LDAP_USER_MANAGER_NAME: manager
+  LDAP_USER_MEMBER_UID: memberUid
+  LOGIN_LOGO_URL: /ng/src/assets/images/apple_maps.png
+  NODE_NAME: KUBE-PC1
+  NODE_NAME1: node1
+  NODE_NAME2: node1
+  NODE_NAME3: node1
+  NODE_RAM: 4G
+  SMTP_IP: 10.80.0.1
+  TIMEZONE: America/Los_Angeles
+  TOPIC_NAMES: profit-apptivodb1-email-messages,profit-apptivodb1-newsfeed-messages-4,profit-apptivodb1-newsfeed-messages-0,profit-apptivodb1-newsfeed-messages-1,profit-apptivodb1-newsfeed-messages-2,pro$
+  QUEUE_NAME: app_stag_apple_gen_all_sub
+  USER_DOMAIN: apptivo.net
+  QUEUE_STATUS: "true"
+

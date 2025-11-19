@@ -1,0 +1,21 @@
+---
+apiVersion: cloud.google.com/v1
+kind: BackendConfig
+metadata:
+  namespace: kube
+  name: apple-backend-config
+spec:
+  securityPolicy:
+    name: us-security-policy
+  sessionAffinity:
+    affinityType: "GENERATED_COOKIE"
+    affinityCookieTtlSec: 86400
+  timeoutSec: 1800
+  connectionDraining:
+    drainingTimeoutSec: 3600
+  customRequestHeaders:
+    headers:
+    - "X-Client-Region:{client_region}"
+    - "X-Client-City:{client_city}"
+    - "X-Client-CityLatLong:{client_city_lat_long}"
+---
