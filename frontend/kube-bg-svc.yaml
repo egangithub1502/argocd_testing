@@ -16,7 +16,7 @@ spec:
     targetPort: 80
   selector:
     app: kube-bg
-    version: blue
+    version: green
   type: LoadBalancer
   loadBalancerIP: 10.128.0.60
   loadBalancerSourceRanges:
