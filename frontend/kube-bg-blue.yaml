@@ -26,7 +26,7 @@ spec:
       serviceAccountName: kube-stag-pvt-cluster-wl-id
       containers:
       - name: kubebgcontainer
-       image: us-central1-docker.pkg.dev/stm-01/my-app-repo/my-app:latest
+        image: us-central1-docker.pkg.dev/stm-01/my-app-repo/my-app:latest
         ports:
         - containerPort: 8082
           protocol: TCP
