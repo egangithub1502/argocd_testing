@@ -5,17 +5,26 @@ metadata:
   namespace: kube
   name: apple-backend-config
 spec:
-  securityPolicy:
-    name: us-security-policy
+  # Remove securityPolicy if quota is 0
+  # securityPolicy:
+  #   name: us-security-policy
+
+  # Session affinity via generated cookie
   sessionAffinity:
     affinityType: "GENERATED_COOKIE"
     affinityCookieTtlSec: 86400
+
+  # Backend timeout
   timeoutSec: 1800
+
+  # Connection draining
   connectionDraining:
     drainingTimeoutSec: 3600
+
+  # Optional custom headers
   customRequestHeaders:
     headers:
-    - "X-Client-Region:{client_region}"
-    - "X-Client-City:{client_city}"
-    - "X-Client-CityLatLong:{client_city_lat_long}"
----
+      - "X-Client-Region:{client_region}"
+      - "X-Client-City:{client_city}"
+      - "X-Client-CityLatLong:{client_city_lat_long}"
+

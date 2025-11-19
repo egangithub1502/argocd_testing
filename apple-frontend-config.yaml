@@ -5,8 +5,10 @@ metadata:
   name: apple-frontend-config
   namespace: kube
 spec:
-  sslPolicy: us-ssl-security
+  # Remove sslPolicy for testing without SSL
+  # sslPolicy: us-ssl-security
+
+  # Optional HTTP → HTTPS redirect (disable for plain HTTP testing)
   redirectToHttps:
-    enabled: true
-    responseCodeName: "301"
----
+    enabled: false
+
